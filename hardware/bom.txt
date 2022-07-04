@@ -1,0 +1,51 @@
+Part  Value       Device              Package      Description                          POPULARITY SPICEPREFIX
+Condensators
+1x 0.01u   C11
+2x 0.1u    C2,C10
+1x 470n25V C8
+1x   1u    C1
+1x 2.2u    C3
+4x 4.7u    C4,C5,C6,C7
+1x  10u    C9
+
+Diodes
+2x  1N4148 D1,D2
+
+Resistors 1/4W 5%
+1x    47R      R14
+3x     1k      R11,R12,R13
+3x    10k      R2,R8,R9
+1x    47k      R7
+3x   100k      R3,R4,R15
+1x   220k      R1
+1x    10M      R10
+
+Resistors 1/4W 1%
+
+1x   180k      R5
+1x   324k      R6
+
+
+U$1   LM385       LM385               TO92.PAC                                                                
+U$3   TSM2302SMD  TSM2302SMD          SOT23                                                                   
+U$4   DOGM240-6   DOGM240-6           LCD-DISPLAY  EA DOGM 240-6 LCD Display                                  
+U$5   TRINKET3V   TRINKET3V           TRINKET3V                                                               
+U$6   HM-17       HM-17               HM-17                                                                   
+U$7   TSM2302SMD  TSM2302SMD          SOT23                                                                   
+U$8   TSM500P02CX TSM500P02CX         SOT23                                                                   
+1x Battery loader curcuit
+
+
+Switches
+1x Press-Button switch
+
+Battery & Battery holder
+1x Battery 3,7V
+1x Battery Holder
+
+Socket row
+1 x 20Pin row
+2x 6-pin row
+
+cables
+4 * 15 cm cable
