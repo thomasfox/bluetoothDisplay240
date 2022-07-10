@@ -131,3 +131,7 @@ you can use a commercial housing. I used the 130x80x35mm FIBOX PC 100/35 LT Hous
 which was available at the time of writing for €17 plus 5€ shipping from [Conrad](https://www.conrad.de).
 The LCD needs to be glued to the transparent cover; I glued just the edges. 
 Also a hole needs to be drilled for the push-button switch, which then also needs to be glued in.
+
+## Questions?
+
+Please open a [issue](../../issues) if you have any questions.
