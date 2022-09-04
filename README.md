@@ -101,7 +101,7 @@ As the USB port on the microcontroller board is software-implemented,
 new USB 3.0 ports typically lead to upload errors. 
 The solution in my case was to use a cheap USB 2.0 hub between the PC and the microcontroller board.
 
-To feed the display, I use my [Saillogger](https://github.com/thomasfox/saillogger) App.
+To feed the display, I use my [Saillogger](https://github.com/thomasfox/saillogger) android app.
 
 ## Bluetooth Low Energy Protocol
 
@@ -119,7 +119,7 @@ The character ';' should act as a field separator (I need to verify whether that
 For the used characteristic, the service uuid is "0000ffe0-0000-1000-8000-00805f9b34fb"
 and the characteristic uuid is "0000ffe1-0000-1000-8000-00805f9b34fb"
 
-You can use https://github.com/thomasfox/saillogger/blob/master/app/src/main/java/com/github/thomasfox/saildata/sender/BleSender.java
+You can use  [Saillogger's BLE sender](https://github.com/thomasfox/saillogger/blob/master/app/src/main/java/com/github/thomasfox/saildata/sender/BleSender.java)
 as a java/android code example for a bluetooth sender.
 
 ## Housing
