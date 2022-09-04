@@ -2,7 +2,7 @@
 
 A bluetooth display for displaying speed, direction and a direction deviation bar while sailing.
 Speed, direction and direction deviation measurements are transmitted via bluetooth, 
-e.g. by a smartphone.
+e.g. by a smartphone. The sum of component prices is about 100€.
 
 ![Front view](images/front.jpg)
 
@@ -100,6 +100,27 @@ before it is soldered in to make sure everything works as expected.
 As the USB port on the microcontroller board is software-implemented,
 new USB 3.0 ports typically lead to upload errors. 
 The solution in my case was to use a cheap USB 2.0 hub between the PC and the microcontroller board.
+
+To feed the display, I use my [Saillogger](https://github.com/thomasfox/saillogger) App.
+
+## Bluetooth Low Energy Protocol
+
+The bluetooth low energy (BLE) transmission protocol is very simple: 
+The feeding device writes the field identifier, a colon (:) and the value of the addressed field
+to the one BLE characteristic offered by the device's BLE receiver. After that, the sending device needs to wait some time
+(should be some 10 ms, I still need to find out how long) before sending the next value.
+
+The field id is f1 for the velocity field, f2 for the direction field and f3 for the direction bar.
+For the f1 and f2 fields, the value can be any short string containing the characters a-z, A-Z, 0-9 or .,:
+(short meaning the value fits in the field's window in the display).
+For the f3 field, the value needs to be an integer value between -100 and 100.
+The character ';' should act as a field separator (I need to verify whether that works).
+
+For the used characteristic, the service uuid is "0000ffe0-0000-1000-8000-00805f9b34fb"
+and the characteristic uuid is "0000ffe1-0000-1000-8000-00805f9b34fb"
+
+You can use https://github.com/thomasfox/saillogger/blob/master/app/src/main/java/com/github/thomasfox/saildata/sender/BleSender.java
+as a java/android code example for a bluetooth sender.
 
 ## Housing
 
