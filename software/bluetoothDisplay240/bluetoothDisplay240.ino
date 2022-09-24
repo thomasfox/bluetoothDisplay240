@@ -14,7 +14,7 @@
 #include "FreeSansBold24pt7b.h"
 #include "FieldConfiguration.h"
 
-const uint8_t BLUETOOTH_BUFFER_SIZE = 20;
+const uint8_t BLUETOOTH_BUFFER_SIZE = 30;
 
 const GFXfont *gfxfont = &FreeSansBold24pt7b;
 
@@ -117,10 +117,6 @@ void receiveBluetooth()
   
   while (bluetooth.available())
   {
-    if (bluetoothReceiveBufferCursor >= BLUETOOTH_BUFFER_SIZE - 1) 
-    {
-      clearBluetoothReceiveBuffer();
-    }
     char readFromBluetooth = bluetooth.read();
     //bluetooth.write(readFromBluetooth);
     if ((readFromBluetooth < '0' || readFromBluetooth > '9')
@@ -140,7 +136,7 @@ void receiveBluetooth()
     }
     bluetoothReceiveBuffer[bluetoothReceiveBufferCursor]=readFromBluetooth;
     String toDisplay = bluetoothReceiveBuffer;
-    if (readFromBluetooth == '\0')
+    if (readFromBluetooth == '\0' || bluetoothReceiveBufferCursor >= BLUETOOTH_BUFFER_SIZE - 1)
     {
       toDisplay = bluetoothReceiveBuffer;
       determineFieldAndDisplayString(toDisplay);
@@ -149,7 +145,7 @@ void receiveBluetooth()
     else
     {
       bluetoothReceiveBufferCursor++;
-    }  
+    }
   }
   //bluetooth.write(bluetoothReceiveBuffer);
 }
@@ -222,16 +218,16 @@ uint8_t batteryChargingState()
   int16_t batteryAnalogRead = analogRead(0);
 
   // Battery charging state calculation
-  // Battery empty: 3.5V. AnalogRead is then 3.5V/3.3V/2*1024=543
-  // Battery full: 4.1V. AnalogRead is then 3.5V/3.3V/2*1024=636. Difference to BatteryEmpty is 93. Factor is then 255/93
-  int16_t batteryAnalogReadAboveEmpty = batteryAnalogRead - 543;
+  // I/O conversion seems to become unlinear below approx 3.6V Battery voltage
+  // from experiment: 4.1V = reading of 650, 3.5 V = reading of 570, difference is 70
+  int16_t batteryAnalogReadAboveEmpty = batteryAnalogRead - 570;
   if (batteryAnalogReadAboveEmpty < 0)
   {
      batteryAnalogReadAboveEmpty = 0;
   }
-  if (batteryAnalogReadAboveEmpty > 93)
+  if (batteryAnalogReadAboveEmpty > 70)
   {
-     batteryAnalogReadAboveEmpty = 93;
+     batteryAnalogReadAboveEmpty = 70;
   }
-  return (uint8_t)(batteryAnalogReadAboveEmpty*255/93);
+  return (uint8_t)(batteryAnalogReadAboveEmpty*255/70);
 }
