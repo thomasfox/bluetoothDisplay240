@@ -14,7 +14,7 @@ This project contains
 
 At the time of writing, material costs were approximately 100€. 
 The electronics runs with 3.3V supply voltage, so it can be operated using a single LI-Ion battery.
-The electronics draws about 15 mA supply current, so that with a 800m mAH battery, 
+The electronics draws about 15 mA supply current, so that with a 800 mAH battery, 
 operation time is more than 50h without reloading.
 
 ## Electronics
